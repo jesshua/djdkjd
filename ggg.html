@@ -1,0 +1,170 @@
+<!DOCTYPE html> 
+<html>
+<head>
+<meta charset="utf-8">
+<title>Aplic. Web de jQuery Mobile</title>
+<script type="text/javascript"> 
+ //definimos la funcion 
+ function calculaIMC() 
+  { 
+ //declaramos las variables 
+var peso, altura, imc, leyenda; 
+//hacemos la llamada a los datos introducidos 
+ peso=document.getElementById("peso").value; 
+ altura=document.getElementById("altura").value/100; 
+//calculamos el imc 
+ imc=peso/(altura*altura); 
+//enviamos el resultado a la caja correspondiente y lo reducimos a 2 decimales 
+ document.getElementById("imc").value=imc.toFixed(2);  
+//mediante if comparamos el resultado para determinar si es correcto el peso 
+if(imc<=20.5) 
+ { 
+ //determinamos el defecto en peso y definimos el comentario 
+ leyenda="Estas delgado. Debes de aumentar tu masa para llegar a  " + (altura*altura*20.5-peso).toFixed(1) + " kilos"; 
+ } 
+ else if(imc>=25.5) 
+{ 
+//determinamos el exceso en peso y definimos el comentario 
+leyenda="Tienes sobrepeso. Debes de bajar tu peso hasta llegar a "+(peso-altura*altura*25.5).toFixed(1) +" kilos"; 
+} 
+else 
+ { 
+ leyenda="Estas en tu peso ideal"; 
+ } 
+//enviamos el comentario a la caja correspondiente 
+document.getElementById("leyenda").value=leyenda; 
+ } 
+</script> 
+<link href="jquery.mobile-1.0.min.css" rel="stylesheet" type="text/css"/>
+<style type="text/css">
+#page div ul div p button {
+	font-size: 9px;
+}
+#page div ul div p button {
+	font-size: 10px;
+}
+</style>
+<script src="jquery-1.6.4.min.js" type="text/javascript"></script>
+<script src="jquery.mobile-1.0.min.js" type="text/javascript"></script>
+</head> 
+<body> 
+
+<div data-role="page" id="page">
+	<div class="ui-btn-hover-b" data-role="header">
+		<h1>CALCULO DEL PESO IDEAL IMC (Indice de Masa Corporal)</h1>
+		<p>&nbsp;</p>
+	</div>
+	<div data-role="content">	
+		
+		<ul data-role="listview">
+        <div class="ui-bar-c" data-role="fieldcontain">
+          <p>Instrucciones de uso:</p>
+          <ol> 
+          <li>°.-Seleccionar el genero de sexo que es la persona.
+           <li>°.-Colocar el peso en kg.
+            <li>°.-Colocar la altura en cm.
+            <li>°.-Dar clik en calcular el IMC.
+            <li>°.-Leer las recomendaciones medicas.
+            </ol>
+            
+	      </div>
+          <div class="ui-btn-down-e" id="center" data-role="fieldcontain">
+		      <p>
+		        <label for="selectmenu" class="select">Selecciona <br>
+		          el sexo de la <br>
+		          persona:</label>
+		           <select name="selectmenu" class="viewport-flip" id="selectmenu">
+		             <option value="SELECCIONA">Seleccionar:</option>
+		             <option value="HOMBRE">Hombre</option>
+		             <option value="MUJER">Mujer</option>
+                     {}
+                </select>
+		      </p>
+		      <p>&nbsp;</p>
+		    </div>
+			
+			  <div class="ui-btn-down-e" data-role="fieldcontain">
+			    <p>
+			      <label for="textinput2">Peso en kg:</label>
+			      <input type="text" name="peso" id="peso" value=""  />
+		        </p>
+			    <p>&nbsp;</p>
+			  </div>
+              <div class="ui-btn-down-e" data-role="fieldcontain">
+		        <p>
+		          <label for="textinput3">
+		            Altura en
+		            
+		            cm:
+	              </label>
+		          <input name="altura" type="text" id="altura" value="" size="10"  />
+	            </p>
+		        <p>&nbsp;</p>
+          </div>
+			</li>
+		  <div data-role="fieldcontain">		  
+		    
+		    <p>
+		     <input type="button" class="viewport-flip" onClick="calculaIMC()" value="Calcular IMC">
+             <input type="text" name="imc" id="imc" size="10" maxlength="15"> 
+	        </p>
+		    <div align="left"></div>
+		  </div>
+		</ul>		
+	</div>
+	<div data-role="fieldcontain">
+	  <label for="textarea">
+	  <h5 align="center"> ESTADO Y RECOMENDACIONES MEDICAS:</h5>
+	  <p>&nbsp;</p>
+	  </label>
+	  <div align="center">
+	    <textarea name="leyenda" cols="70" rows="20" readonly class="ui-bar-c" id="leyenda"></textarea>
+      </div>
+  </div>
+    
+	<div data-role="footer">
+	  <p align="center" class="k"><img src="gorditos.jpg" width="585" height="141" alt="&quot;DE LA DELGADEZ A LA OBESIDAD&quot;" longdesc="http://www.google.com.mx"> </p>
+	  <p>&nbsp;</p>
+	</div>
+</div>
+
+<div data-role="page" id="page2">
+	<div data-role="header">
+		<h1>Página dos</h1>
+	</div>
+	<div data-role="content"></div>
+	<div data-role="footer">
+		<h4>Pie de página</h4>
+	</div>
+</div>
+
+<div data-role="page" id="page3">
+	<div data-role="header">
+		<h1>Página tres</h1>
+	</div>
+	<div data-role="fieldcontain">
+	  <label for="textinput">Introducción de texto:</label>
+	  <input type="text" name="textinput" id="textinput" value=""  />
+  </div>
+	<div data-role="content">	
+		Contenido		
+	</div>
+	<div data-role="footer">
+		<h4>Pie de página</h4>
+	</div>
+</div>
+
+<div data-role="page" id="page4">
+	<div data-role="header">
+		<h1>Página cuatro</h1>
+	</div>
+	<div data-role="content">	
+		Contenido		
+	</div>
+	<div data-role="footer">
+		<h4>Pie de página</h4>
+	</div>
+</div>
+
+</body>
+</html>
